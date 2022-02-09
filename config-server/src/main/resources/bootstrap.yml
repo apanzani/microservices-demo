@@ -5,6 +5,6 @@ spring:
     config:
       server:
         git:
-          url: file:/C:/Users/andrea.panzani/ideaProjects/microservices-demo/config-server-repository
+          uri: file:/C:/Users/andrea.panzani/ideaProjects/microservices-demo/config-server-repository
           clone-on-start: true
     fail-fast: true
