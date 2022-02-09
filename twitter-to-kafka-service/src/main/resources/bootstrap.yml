@@ -1,0 +1,10 @@
+spring:
+  applicaiton:
+    name: twitter-to-kafka-service
+  profile:
+    active: twitter_to_kafka
+  cloud:
+    config:
+      # all'interno del config-server-repository abbiamo il file config-client-twitter_to_kafka
+      name: twitter-to-kafka-service,config-client
+      url: http://localhost:8888

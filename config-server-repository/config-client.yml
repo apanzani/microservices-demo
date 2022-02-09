@@ -1,0 +1,8 @@
+# It will use config.yml file for our general application configuration logic,
+# and we will create different YAML files for each of our microservices.
+
+spring:
+  cloud:
+    config:
+      allow-override: true
+      override-none: true

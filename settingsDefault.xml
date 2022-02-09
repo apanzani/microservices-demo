@@ -3,10 +3,6 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
 
-	<pluginGroups>
-		<pluginGroup>com.intesasanpaolo.maven.plugins</pluginGroup>
-	</pluginGroups>
-
 	<servers>
 		<server>
 			<id>artifactory-central-repos</id>
@@ -67,25 +63,6 @@
 	</servers>
 
 	<profiles>
-		<profile>
-			<id>artifactory-local</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<repositories>
-				<repository>
-					<id>artifactory-local-repos</id>
-					<!--<name>Artifactory releases</name>-->
-					<url>http://arti0.sede.corp.sanpaoloimi.com:8081/artifactory/local-repos/</url>
-				</repository>
-			</repositories>
-			<pluginRepositories>
-				<pluginRepository>
-					<id>artifactory-local-plugins-repos</id>
-					<url>http://arti0.sede.corp.sanpaoloimi.com:8081/artifactory/local-repos/</url>
-				</pluginRepository>
-			</pluginRepositories>
-		</profile>
 		<profile>
 		 <id>myprofile</id>
 		 <repositories>
