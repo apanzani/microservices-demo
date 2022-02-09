@@ -6,6 +6,10 @@ target/
 mvnw
 .mvn/
 mvnw.cmd
+twitter-to-kafka-service/twitter-to-kafka-service/*
+twitter-to-kafka-service/logs/*
+twitter-to-kafka-service/src/main/java/com/microservices/demo/twitter/to/kafka/service/runner/RunnerTestMain.java
+
 
 ### STS ###
 .apt_generated
