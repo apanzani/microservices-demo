@@ -5,3 +5,16 @@ logging:
   level:
     ROOT: info
     org.spring.framework.cloud.config: DEBUG
+
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:/C:/Users/andrea.panzani/ideaProjects/microservices-demo/config-server-repository
+          clone-on-start: true
+    fail-fast: true
+log:
+  app-name: config-server

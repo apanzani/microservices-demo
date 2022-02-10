@@ -37,7 +37,20 @@
 #  linger-ms: 5
 #  request-timeout-ms: 60000
 #  retry-count: 5
+spring:
+  applicaiton:
+    name: twitter-to-kafka-service
+  profile:
+    active: twitter_to_kafka
+  config:
+    import: 'configserver:'
+  cloud:
+    config:
+      # all'interno del config-server-repository abbiamo il file config-client-twitter_to_kafka
+      name: twitter-to-kafka-service,config-client
 
+log:
+  app-name: twitter-to-kafka-service
 
 
 
