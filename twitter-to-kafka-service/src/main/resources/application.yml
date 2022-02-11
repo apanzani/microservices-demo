@@ -40,7 +40,7 @@
 spring:
   applicaiton:
     name: twitter-to-kafka-service
-  profile:
+  profiles:
     active: twitter_to_kafka
   config:
     import: 'configserver:'

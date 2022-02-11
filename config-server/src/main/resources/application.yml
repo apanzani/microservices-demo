@@ -13,7 +13,10 @@ spring:
     config:
       server:
         git:
-          uri: file:/C:/Users/andrea.panzani/ideaProjects/microservices-demo/config-server-repository
+          uri: https://github.com/apanzani/spring-cloud-config-server-repository
+          username: apanzani
+          password: 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
+          default-label: main
           clone-on-start: true
     fail-fast: true
 log:
