@@ -38,7 +38,7 @@
 #  request-timeout-ms: 60000
 #  retry-count: 5
 spring:
-  applicaiton:
+  application:
     name: twitter-to-kafka-service
   profiles:
     active: twitter_to_kafka
@@ -49,10 +49,14 @@ spring:
       # all'interno del config-server-repository abbiamo il file config-client-twitter_to_kafka
       name: twitter-to-kafka-service,config-client
       username: spring_cloud_server
-      password: springCloud_Pwd!
+      password: ENC(${SPRING_CLOUD_SERVER_PWD})
 
 log:
   app-name: twitter-to-kafka-service
+
+jasypt:
+  encryptor:
+    password: Demo_Pwd!2020
 
 
 

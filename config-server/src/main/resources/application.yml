@@ -15,13 +15,18 @@ spring:
         git:
           uri: https://github.com/apanzani/spring-cloud-config-server-repository
           username: apanzani
-          password: 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
+          #devo fare la encrypt del token che mi viene dato da gitHub
+          password: ENC(${MY_ENC_TOKEN})
           default-label: main
           clone-on-start: true
     fail-fast: true
   security:
     user:
       name: spring_cloud_server
-      password: springCloud_Pwd!
+      password: ENC(${SPRING_CLOUD_SERVER_PWD})
 log:
   app-name: config-server
+
+jasypt:
+  encryptor:
+    password: Demo_Pwd!2020
