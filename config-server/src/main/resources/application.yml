@@ -15,7 +15,7 @@ spring:
         git:
           uri: https://github.com/apanzani/spring-cloud-config-server-repository
           username: apanzani
-          password: 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
+          password: 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
           default-label: main
           clone-on-start: true
     fail-fast: true
