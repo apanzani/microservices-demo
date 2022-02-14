@@ -51,12 +51,6 @@ spring:
       username: spring_cloud_server
       password: ENC(${SPRING_CLOUD_SERVER_PWD})
 
+
 log:
   app-name: twitter-to-kafka-service
-
-jasypt:
-  encryptor:
-    password: Demo_Pwd!2020
-
-
-
