@@ -6,4 +6,10 @@ Per controllare che kafka sia su e che siano stati creati i topic eseguire il co
 Se si vuole vedere i messaggi inviati su kafka eseguire il comando -> docker run -it --network=host confluentinc/cp-kafkacat kafkacat -C -b localhost:19092 -t twitter-topic
 
 
-
+Per utilizzare la JCE ho bisogno di spring-cloud-cli installato in modo da fare la encrypt della password. Se uso powershell è direttamente utilizzabile come comando "spring", in alternativa,
+usando la GIT BASH, mi devo portare sul path /c/Users/andrea.panzani/scoop/apps/springboot/2.6.3/bin e poi lanciare il comando "./spring"
+Per fare le encrypt utilizzare il comando " ./spring encrypt {password_che_voglio} --key '{ENCRYPT_KEY}'" es. ./spring encrypt springCloud_Pwd! --key 'Demo_Pwd!2020'
+Devo aggiungere come variabile d'ambiente la ENCRYPT_KEY assegnandoglio la mia secret, in questo caso Demo_Pwd!2020
+Per vedere la encrypt e decrypt con JCE - Java Cryptography Extension - eseguire il ConfigServer
+fare una chiamata da Postman POST http://localhost:8888/encrypt passando come body la chiave che vogliamo
+criptare. Per decriptare usare l'url http://localhost:8888/decrypt

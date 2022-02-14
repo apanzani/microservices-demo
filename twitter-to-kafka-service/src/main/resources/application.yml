@@ -49,7 +49,7 @@ spring:
       # all'interno del config-server-repository abbiamo il file config-client-twitter_to_kafka
       name: twitter-to-kafka-service,config-client
       username: spring_cloud_server
-      password: springCloud_Pwd!
+      password: '{cipher}31a93d656f71932c3158cf3cd76237e8204b9a865241a15843a08e6baa16e65f07688f7684c7ab03516c01f64a467f8c'
 
 log:
   app-name: twitter-to-kafka-service
