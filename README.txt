@@ -13,3 +13,6 @@ Devo aggiungere come variabile d'ambiente la ENCRYPT_KEY assegnandoglio la mia s
 Per vedere la encrypt e decrypt con JCE - Java Cryptography Extension - eseguire il ConfigServer
 fare una chiamata da Postman POST http://localhost:8888/encrypt passando come body la chiave che vogliamo
 criptare. Per decriptare usare l'url http://localhost:8888/decrypt
+
+La configurazione Run/Debug configurations di SPRING_SECURITY_USER_PASSWORD deve essere senza apici singoli
+es: SPRING_SECURITY_USER_PASSWORD={cipher}5fdfaab1a3644d27689467247c5783714fe78d43e855b0ecb7391349406f70719b8319b8ab0d744c0488c000be90dc6d

@@ -15,7 +15,9 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -52,6 +54,14 @@ public class TwitterToKafkaConsumer implements KafkaConsumer<Long, TwitterAvroMo
         LOG.info("{} number of message received with keys {}, partitions {} and offsets {}, " +
                 "sending it to elastic: Thread id {}",
                 message.size(), keys.toString(), partitions.toString(),offsets.toString(), Thread.currentThread().getId());
+        if(!CollectionUtils.isEmpty(message)){
+            message.forEach(this::logMessage);
 
+        }
+
+    }
+
+    private void logMessage(TwitterAvroModel twitterAvroModel) {
+        LOG.info("Massage received: {}", twitterAvroModel.getText());
     }
 }

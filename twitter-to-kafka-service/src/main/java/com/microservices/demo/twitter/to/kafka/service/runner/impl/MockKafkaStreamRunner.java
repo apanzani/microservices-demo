@@ -94,10 +94,15 @@ public class MockKafkaStreamRunner implements StreamRunner {
         Executors.newSingleThreadExecutor().submit(() -> {
             try {
                 while (true) {
-                    LOG.info("Creating tweet on separated thread ...");
+                    LOG.info("##########################################");
+                    LOG.info("# Creating tweet on separated thread ... #");
+                    LOG.info("##########################################");
                     String formattedTweetAsRawJson = getFormattedTweet(keywords, mockMinTweetLength, mockMaxTweetLength);
                     Status status = TwitterObjectFactory.createStatus(formattedTweetAsRawJson);
                     twitterKafkaStatusListener.onStatus(status);
+                    LOG.info("##############################################################");
+                    LOG.info("# I'm going to sleep and after I will generate new tweet ... #");
+                    LOG.info("##############################################################");
                     sleep(mockSleepMs);
                 }
             } catch (TwitterException e) {

@@ -21,7 +21,7 @@ spring:
     fail-fast: true
   security:
     user:
-      name: spring_cloud_server
+      name: spring_cloud_user
       password: ${SPRING_SECURITY_USER_PASSWORD}
 log:
   app-name: config-server
