@@ -38,7 +38,7 @@
 #  request-timeout-ms: 60000
 #  retry-count: 5
 spring:
-  applicaiton:
+  application:
     name: twitter-to-kafka-service
   profiles:
     active: twitter_to_kafka
