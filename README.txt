@@ -43,4 +43,22 @@ Verificare che sia up tramite Postman con una chimata GET all'url localhost:9200
 
 
 
+#### DOCKER CONNECTION SUCCESSFULLY ON INTELLIJ
 
+In Engine API URL mettere tcp://localhost:2375
+Aggiugnere questo nel .bashrc file :
+
+# Start Docker daemon automatically when logging in if not running.
+RUNNING=`ps aux | grep dockerd | grep -v grep`
+if [ -z "$RUNNING" ]; then
+    sudo dockerd > /dev/null 2>&1 &
+    disown
+fi
+export DOCKER_HOST=tcp://0.0.0.0:2375
+
+Eseguire il comando sudo visudo ed aggiungere alla fine :
+# Docker daemon specification
+apanzani ALL=(ALL) NOPASSWD: /usr/bin/dockerd
+
+Creare questo file se non esiste /etc/docker/daemon.json ed aggingere questa riga {"hosts": ["tcp://0.0.0.0:2375", "unix:///var/run/docker.sock"]}
+Riavviare WSL e provare a collegarsi docker -H tcp://localhost:2375
