@@ -11,6 +11,7 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 // Applied at the class level to indicate this class is a candidate for mapping to the database.
 // The most important attributes are:
@@ -34,7 +35,7 @@ public class TwitterIndexModel implements IndexModel {
     @Field (type = FieldType.Date, format = {}, pattern ="uuuu-MM-dd'T'HH:mm:ssZZ" )
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "uuuu-MM-dd'T'HH:mm:ssZZ")
     @JsonProperty
-    private LocalDateTime createdAt;
+    private ZonedDateTime createdAt;
 
     //posso rimuovere il metodo getId perchè l'annotazione Data mi crea lei il metodo
 }
