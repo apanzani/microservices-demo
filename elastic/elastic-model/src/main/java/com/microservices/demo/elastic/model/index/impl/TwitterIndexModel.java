@@ -18,7 +18,8 @@ import java.time.ZonedDateTime;
 // indexName: the name of the index to store this entity in. This can contain a SpEL template expression
 // like "log-#{T(java.time.LocalDate).now().toString()}"
 // https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/#reference
-@Document(indexName = "#{elasticConfigData.indexName}")
+// @ means you need to provide a bean with the given name.
+@Document(indexName = "#{@elasticConfigData.indexName}")
 @Builder
 @Data
 public class TwitterIndexModel implements IndexModel {
