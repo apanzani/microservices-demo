@@ -59,7 +59,7 @@ if [ -z "$RUNNING" ]; then
 fi
 export DOCKER_HOST=tcp://0.0.0.0:2375
 
-Eseguire il comando sudo visudo ed aggiungere alla fine :
+Eseguire il comando "sudo visudo" ed aggiungere alla fine :
 # Docker daemon specification
 apanzani ALL=(ALL) NOPASSWD: /usr/bin/dockerd
 
