@@ -58,6 +58,9 @@ services:
       - "ENCRYPT_KEY=${ENCRYPT_KEY}"
       - "SPRING_SECURITY_USER_PASSWORD=${SPRING_SECURITY_USER_PASSWORD}"
       - "SPRING_DATA_ELASTICSEARCH_CLIENT_REACTIVE_ENDPOINTS=elastic-1:9200"
+      - "LOG_APP-NAME=kafka-to-elastic-service"
+      - "SPRING_ZIPKIN_SENDER_TYPE=kafka"
+      - "SPRING_SLEUTH_SAMPLER_PROBABILITY=1.0"
     networks:
       - ${GLOBAL_NETWORK:-services}
   config-server:

@@ -43,7 +43,7 @@
 		<kafka-avro-serializer.version>7.0.1</kafka-avro-serializer.version>
 		<spring-cloud.version>3.1.0</spring-cloud.version>
 		<spring-cloud-dependecies.version>2021.0.0</spring-cloud-dependecies.version>
-		<elasticsearch.version>7.14.0</elasticsearch.version>
+		<elasticsearch.version>7.15.2</elasticsearch.version>
 	</properties>
 
 	<repositories>
