@@ -20,6 +20,7 @@ la variabile venga letta dalle Run/Debug configurations
 La configurazione Run/Debug configurations di SPRING_SECURITY_USER_PASSWORD deve essere senza apici singoli
 es: SPRING_SECURITY_USER_PASSWORD={cipher}5fdfaab1a3644d27689467247c5783714fe78d43e855b0ecb7391349406f70719b8319b8ab0d744c0488c000be90dc6d
 
+Se utilizzo WSL fare l'export delle variabili d'ambiente nel sistema WSL
 
 ### ElasticSearch  ###
 Se lanciando docker-compose ottengo exited with code 78 bootstrap check failure [1] of [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
