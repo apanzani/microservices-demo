@@ -28,7 +28,7 @@ services:
     networks:
       - ${GLOBAL_NETWORK:-services}
   kafka-to-elastic-service:
-    image: ${GROUP_ID}/twitter.to.kafka.service:${SERVICE_VERSION:-latest}
+    image: ${GROUP_ID}/kafka.to.elastic.service:${SERVICE_VERSION:-latest}
     ports:
       - "5006:5006"
     volumes:
