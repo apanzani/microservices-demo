@@ -70,6 +70,8 @@ public class TwitterToKafkaConsumer implements KafkaConsumer<Long, TwitterAvroMo
     }
 
     private void logMessage(TwitterAvroModel twitterAvroModel) {
+        LOG.info("*************************************************");
         LOG.info("Massage received: {}", twitterAvroModel.getText());
+        LOG.info("*************************************************");
     }
 }

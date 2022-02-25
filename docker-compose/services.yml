@@ -43,8 +43,8 @@ services:
       - kafka-broker-2
       - kafka-broker-3
       - elastic-1
-      - elastic-2
-      - elastic-3
+#      - elastic-2
+#      - elastic-3
     environment:
       - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006 -Xms128m -Xmx256m"
       - "LOGGING_LEVEL_COM_MICROSERVICES_DEMO=error"

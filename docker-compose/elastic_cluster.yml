@@ -5,11 +5,13 @@ services:
     hostname: elastic-1
     environment:
       - node.name=elastic-1
-      - cluster.name=es-twitter-cluster
-      - discovery.seed_hosts=elastic-2,elastic-3
-      - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3
+#      - cluster.name=es-twitter-cluster
+      - discovery.type=single-node
+#     - discovery.seed_hosts=elastic-2,elastic-3
+#      - cluster.initial_master_nodes=elastic-1
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - cluster.routing.allocation.disk.threshold_enabled=false
     ulimits:
       memlock:
         soft: -1
@@ -21,48 +23,49 @@ services:
       - data01_7_15_2:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+      - 9300:9300
     networks:
       - ${GLOBAL_NETWORK:-elastic}
-  elastic-2:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
-    environment:
-      - node.name=elastic-2
-      - cluster.name=es-twitter-cluster
-      - discovery.seed_hosts=elastic-1,elastic-3
-      - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-      nofile:
-        soft: 65536
-        hard: 65536
-    volumes:
-      - data02_7_15_2:/usr/share/elasticsearch/data
-    networks:
-      - ${GLOBAL_NETWORK:-elastic}
-  elastic-3:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
-    environment:
-      - node.name=elastic-3
-      - cluster.name=es-twitter-cluster
-      - discovery.seed_hosts=elastic-1,elastic-2
-      - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-      nofile:
-        soft: 65536
-        hard: 65536
-    volumes:
-      - data03_7_15_2:/usr/share/elasticsearch/data
-    networks:
-      - ${GLOBAL_NETWORK:-elastic}
+#  elastic-2:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
+#    environment:
+#      - node.name=elastic-2
+#      - cluster.name=es-twitter-cluster
+#      - discovery.seed_hosts=elastic-1,elastic-3
+#      - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3
+#      - bootstrap.memory_lock=true
+#      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+#    ulimits:
+#      memlock:
+#        soft: -1
+#        hard: -1
+#      nofile:
+#        soft: 65536
+#        hard: 65536
+#    volumes:
+#      - data02_7_15_2:/usr/share/elasticsearch/data
+#    networks:
+#      - ${GLOBAL_NETWORK:-elastic}
+#  elastic-3:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
+#    environment:
+#      - node.name=elastic-3
+#      - cluster.name=es-twitter-cluster
+#      - discovery.seed_hosts=elastic-1,elastic-2
+#      - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3
+#      - bootstrap.memory_lock=true
+#      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+#    ulimits:
+#      memlock:
+#        soft: -1
+#        hard: -1
+#      nofile:
+#        soft: 65536
+#        hard: 65536
+#    volumes:
+#      - data03_7_15_2:/usr/share/elasticsearch/data
+#    networks:
+#      - ${GLOBAL_NETWORK:-elastic}
 #  kibana:
 #    image: docker.elastic.co/kibana/kibana:${ELASTIC_VERSION}
 #    ports:
@@ -97,7 +100,7 @@ services:
 volumes:
   data01_7_15_2:
     driver: local
-  data02_7_15_2:
-    driver: local
-  data03_7_15_2:
-    driver: local
+#  data02_7_15_2:
+#    driver: local
+#  data03_7_15_2:
+#    driver: local
