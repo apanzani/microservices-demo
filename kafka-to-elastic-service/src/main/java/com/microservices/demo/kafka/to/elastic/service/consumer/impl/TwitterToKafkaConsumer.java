@@ -57,16 +57,17 @@ public class TwitterToKafkaConsumer implements KafkaConsumer<Long, TwitterAvroMo
                         @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) List<Integer> keys,
                         @Header(KafkaHeaders.RECEIVED_PARTITION_ID) List<Integer> partitions,
                         @Header(KafkaHeaders.OFFSET) List<Long> offsets) {
-        LOG.info("{} number of message received with keys {}, partitions {} and offsets {}, " +
-                "sending it to elastic: Thread id {}",
-                message.size(), keys.toString(), partitions.toString(),offsets.toString(), Thread.currentThread().getId());
+        LOG.info("###############################################################################");
+        LOG.info("Kafka listener has been woke up and has received {} number of message with keys {}, " +
+                        "partitions {} and offsets {} and will be send to elastic: Thread id {}",
+                message.size(), keys, partitions.toString(),offsets.toString(), Thread.currentThread().getId());
         if(!CollectionUtils.isEmpty(message)){
             message.forEach(this::logMessage);
         }
         List<TwitterIndexModel> twitterIndexModels = avroToElisticModelTransformer.getElasticModels(message);
         List<String> documentIds = elasticIndexClient.save(twitterIndexModels);
-        LOG.info("Documents saved to elasticsearch with ids: {}", documentIds.toArray() );
-
+        LOG.info("Documents key received {} saved to elasticsearch with ids: {}",keys, documentIds.toArray() );
+        LOG.info("###############################################################################");
     }
 
     private void logMessage(TwitterAvroModel twitterAvroModel) {

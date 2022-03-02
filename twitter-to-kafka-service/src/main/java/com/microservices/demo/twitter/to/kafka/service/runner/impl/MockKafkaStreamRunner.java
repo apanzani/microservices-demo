@@ -21,6 +21,7 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 @Component
 @ConditionalOnProperty(name = "twitter-to-kafka-service.enable-mock-tweets", havingValue = "true")
@@ -101,7 +102,7 @@ public class MockKafkaStreamRunner implements StreamRunner {
                     Status status = TwitterObjectFactory.createStatus(formattedTweetAsRawJson);
                     twitterKafkaStatusListener.onStatus(status);
                     LOG.info("##############################################################");
-                    LOG.info("# I'm going to sleep and after I will generate new tweet ... #");
+                    LOG.info("# I'm going to sleep for  {}s, and after I will generate new tweet ... #", TimeUnit.MILLISECONDS.toSeconds(mockSleepMs));
                     LOG.info("##############################################################");
                     sleep(mockSleepMs);
                 }
