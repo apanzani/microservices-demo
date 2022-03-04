@@ -66,3 +66,9 @@ apanzani ALL=(ALL) NOPASSWD: /usr/bin/dockerd
 
 Creare questo file se non esiste /etc/docker/daemon.json ed aggingere questa riga {"hosts": ["tcp://0.0.0.0:2375", "unix:///var/run/docker.sock"]}
 Riavviare WSL e provare a collegarsi docker -H tcp://localhost:2375
+
+
+#### ELASTIC-QUERY-SERVICE ###
+Per lanciarlo una prima volta occore aver startato elastic con il comando
+-> docker-compose  -f common.yml -f elastic_single_node.yml up
+Dopo di che far partire da Intellij il configServer e poi l'ElasticQueryServiceApplication
