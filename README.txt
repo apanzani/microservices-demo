@@ -22,7 +22,11 @@ es: SPRING_SECURITY_USER_PASSWORD={cipher}5fdfaab1a3644d27689467247c5783714fe78d
 
 Se utilizzo WSL fare l'export delle variabili d'ambiente nel sistema WSL
 
-### ElasticSearch  ###
+### CONFIG SERVER  ###
+Se voglio vedere le configurazioni in cloud mi devo collegare all'indirizzo http://localhost:8888/config-client/{name} dove name è l'active profile settato
+nell'application.yml del mio servizio
+
+### ELASTICSEARCH  ###
 Se lanciando docker-compose ottengo exited with code 78 bootstrap check failure [1] of [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
 allora devo lanciare nel terminal ubuntu il comando "sudo sysctl -w vm.max_map_count=262144"
 Lanciare il comando -> docker-compose -f common.yml -f elastic_cluster.yml up per creare il cluster elasticsearch

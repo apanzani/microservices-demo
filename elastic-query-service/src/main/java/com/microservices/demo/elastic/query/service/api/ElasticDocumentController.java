@@ -16,7 +16,7 @@ public class ElasticDocumentController {
 
     private static final Logger LOG = LoggerFactory.getLogger(ElasticDocumentController.class);
 
-    @GetMapping("/")
+    @GetMapping
     public @ResponseBody
     ResponseEntity<List<ElasticQuerySeviceResponseModel>> getAllDocuments(){
         List<ElasticQuerySeviceResponseModel> response = new ArrayList<>();

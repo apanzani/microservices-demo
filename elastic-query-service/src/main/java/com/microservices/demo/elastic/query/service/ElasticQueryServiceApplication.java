@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.microservices.demo")
+@ComponentScan(basePackages = {"com.microservices.demo", "com.microservices.demo.elastic.query.service.api"})
 public class ElasticQueryServiceApplication {
 
     public static void main(String[] args) {
