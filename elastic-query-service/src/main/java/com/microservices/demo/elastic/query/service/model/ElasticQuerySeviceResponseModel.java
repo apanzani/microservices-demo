@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.time.ZonedDateTime;
 
@@ -11,7 +12,7 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ElasticQuerySeviceResponseModel {
+public class ElasticQuerySeviceResponseModel extends RepresentationModel<ElasticQuerySeviceResponseModel> {
 
     private String id;
     private String text;
