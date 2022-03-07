@@ -4,7 +4,7 @@ import com.microservices.demo.elastic.model.index.IndexModel;
 
 import java.util.List;
 
-public interface ElasticQueryService<T extends IndexModel> {
+public interface ElasticQueryClient<T extends IndexModel> {
 
     T getIndexModelById(String id);
 

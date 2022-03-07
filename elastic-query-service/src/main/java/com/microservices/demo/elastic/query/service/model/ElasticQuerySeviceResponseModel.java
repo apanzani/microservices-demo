@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.ZonedDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,4 +15,6 @@ public class ElasticQuerySeviceResponseModel {
 
     private String id;
     private String text;
+    private Long userId;
+    private ZonedDateTime createdAt;
 }

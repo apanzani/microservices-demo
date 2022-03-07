@@ -2,7 +2,7 @@ package com.microservices.demo.elastic.query.client.service.impl;
 
 import com.microservices.demo.elastic.model.index.impl.TwitterIndexModel;
 import com.microservices.demo.elastic.query.client.exception.ElasticQueryClientException;
-import com.microservices.demo.elastic.query.client.service.ElasticQueryService;
+import com.microservices.demo.elastic.query.client.service.ElasticQueryClient;
 import com.microservices.demo.elastic.query.client.util.ElasticQueryUtil;
 import com.microservices.demo.kafka.producer.config.ElasticConfigData;
 import com.microservices.demo.kafka.producer.config.ElasticQueryConfigData;
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class TweetterElasticQueryClient implements ElasticQueryService<TwitterIndexModel> {
+public class TweetterElasticQueryClient implements ElasticQueryClient<TwitterIndexModel> {
 
     private static final Logger LOG = LoggerFactory.getLogger(TweetterElasticQueryClient.class);
 

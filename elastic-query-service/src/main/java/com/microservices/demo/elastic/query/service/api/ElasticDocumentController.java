@@ -1,5 +1,6 @@
 package com.microservices.demo.elastic.query.service.api;
 
+import com.microservices.demo.elastic.query.service.business.ElasticQueryService;
 import com.microservices.demo.elastic.query.service.model.ElasticQuerySeviceRequestModel;
 import com.microservices.demo.elastic.query.service.model.ElasticQuerySeviceResponseModel;
 import org.slf4j.Logger;
@@ -16,10 +17,16 @@ public class ElasticDocumentController {
 
     private static final Logger LOG = LoggerFactory.getLogger(ElasticDocumentController.class);
 
+    private final ElasticQueryService elasticQueryService;
+
+    public ElasticDocumentController(ElasticQueryService elasticQueryService) {
+        this.elasticQueryService = elasticQueryService;
+    }
+
     @GetMapping
     public @ResponseBody
     ResponseEntity<List<ElasticQuerySeviceResponseModel>> getAllDocuments(){
-        List<ElasticQuerySeviceResponseModel> response = new ArrayList<>();
+        List<ElasticQuerySeviceResponseModel> response = elasticQueryService.getAllDocuments();
         LOG.info("Elasticsearch returned {} of documents ", response.size());
         return ResponseEntity.ok(response);
     }
@@ -27,7 +34,7 @@ public class ElasticDocumentController {
     @GetMapping("/{id}")
     public @ResponseBody ResponseEntity<ElasticQuerySeviceResponseModel> getDocumentById(
             @PathVariable String id){
-        ElasticQuerySeviceResponseModel responseModel = ElasticQuerySeviceResponseModel.builder().id(id).build();
+        ElasticQuerySeviceResponseModel responseModel = elasticQueryService.getDocumentById(id);
         LOG.debug("Elasticsearch returned document with id {} ", id);
         return ResponseEntity.ok(responseModel);
     }
@@ -35,9 +42,8 @@ public class ElasticDocumentController {
     @PostMapping("/get-documet-by-text")
     public @ResponseBody ResponseEntity<List<ElasticQuerySeviceResponseModel>> getDocumentByText(
             @RequestBody ElasticQuerySeviceRequestModel requestModel){
-        ElasticQuerySeviceResponseModel responseModel = ElasticQuerySeviceResponseModel.builder().text(requestModel.getText()).build();
 
-        List<ElasticQuerySeviceResponseModel> responseModels = List.of(responseModel);
+        List<ElasticQuerySeviceResponseModel> responseModels = elasticQueryService.getDocumentByText(requestModel.getText());
         LOG.info("Elasticsearch returned {} of documents ", responseModels.size());
         return ResponseEntity.ok(responseModels);
     }

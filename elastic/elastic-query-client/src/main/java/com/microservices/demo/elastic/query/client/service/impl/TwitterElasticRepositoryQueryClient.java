@@ -4,7 +4,7 @@ import com.microservices.demo.common.util.CollectionsUtil;
 import com.microservices.demo.elastic.model.index.impl.TwitterIndexModel;
 import com.microservices.demo.elastic.query.client.exception.ElasticQueryClientException;
 import com.microservices.demo.elastic.query.client.repository.TwitterElastisearchQueryRepository;
-import com.microservices.demo.elastic.query.client.service.ElasticQueryService;
+import com.microservices.demo.elastic.query.client.service.ElasticQueryClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Primary;
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Primary
 @Service
-public class TwitterElasticRepositoryQueryClient implements ElasticQueryService<TwitterIndexModel> {
+public class TwitterElasticRepositoryQueryClient implements ElasticQueryClient<TwitterIndexModel> {
 
     private static final Logger LOG = LoggerFactory.getLogger(TwitterElasticRepositoryQueryClient.class);
 

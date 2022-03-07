@@ -76,3 +76,11 @@ Riavviare WSL e provare a collegarsi docker -H tcp://localhost:2375
 Per lanciarlo una prima volta occore aver startato elastic con il comando
 -> docker-compose  -f common.yml -f elastic_single_node.yml up
 Dopo di che far partire da Intellij il configServer e poi l'ElasticQueryServiceApplication
+le chiamate che vengono gestite sono:
+GET localhost:8184/elastic-query-service/documents
+GET localhost:8184/elastic-query-service/documents/1
+POST localhost:8184/elastic-query-service/documents/get-documet-by-text body {
+                                                                                 "text":"prova"
+                                                                             }
+
+
