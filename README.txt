@@ -86,3 +86,20 @@ POST localhost:8184/elastic-query-service/documents/get-documet-by-text body {
 Se voglio chiamare la versione V2 utilizzando il media type, attraverso postman devo settare
 nell'header il campo Acccept con i valori che trovo all'interno di produces,
 in questo caso con application/vnd.api.v1+json o application/vnd.api.v2+json
+
+
+OPENAPI Specification
+The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows
+both humans and computers to discover and understand the capabilities of the service without
+access to source code, documentation, or through network traffic inspection. When properly defined,
+a consumer can understand and interact with the remote service with a minimal amount of implementation logic.
+
+An OpenAPI definition can then be used by documentation generation tools to display the API, code generation
+tools to generate servers and clients in various programming languages, testing tools, and many other use cases.
+
+Per vedere la descrizione delle api in formato yaml andare al link
+http://localhost:8184/elastic-query-service/api-docs
+http://localhost:8184/elastic-query-service/api-docs.yaml
+Se richiedere username e password inserire test test1234
+
+Al link http://localhost:8184/elastic-query-service/swagger-ui/index.html#/ ho la versione dello swagger
