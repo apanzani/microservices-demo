@@ -83,4 +83,6 @@ POST localhost:8184/elastic-query-service/documents/get-documet-by-text body {
                                                                                  "text":"prova"
                                                                              }
 
-
+Se voglio chiamare la versione V2 utilizzando il media type, attraverso postman devo settare
+nell'header il campo Acccept con i valori che trovo all'interno di produces,
+in questo caso con application/vnd.api.v1+json o application/vnd.api.v2+json
