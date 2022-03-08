@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,9 @@ public class ElasticDocumentController {
 
     private final ElasticQueryService elasticQueryService;
 
+    @Value("${server.port}")
+    private String port;
+
     public ElasticDocumentController(ElasticQueryService elasticQueryService) {
         this.elasticQueryService = elasticQueryService;
     }
@@ -44,7 +48,7 @@ public class ElasticDocumentController {
     public @ResponseBody
     ResponseEntity<List<ElasticQuerySeviceResponseModel>> getAllDocuments() {
         List<ElasticQuerySeviceResponseModel> response = elasticQueryService.getAllDocuments();
-        LOG.info("Elasticsearch returned {} of documents ", response.size());
+        LOG.info("Elasticsearch returned {} of documents on port {}", response.size(), port);
         return ResponseEntity.ok(response);
     }
 
@@ -61,7 +65,7 @@ public class ElasticDocumentController {
     ResponseEntity<ElasticQuerySeviceResponseModel> getDocumentById(
             @PathVariable @NotEmpty String id) {
         ElasticQuerySeviceResponseModel responseModel = elasticQueryService.getDocumentById(id);
-        LOG.debug("Elasticsearch returned document with id {} ", id);
+        LOG.debug("Elasticsearch returned document with id {} on port {}", id, port);
         return ResponseEntity.ok(responseModel);
     }
 
@@ -78,7 +82,7 @@ public class ElasticDocumentController {
     ResponseEntity<ElasticQuerySeviceResponseModelV2> getDocumentByIdV2(
             @PathVariable @NotEmpty String id) {
         ElasticQuerySeviceResponseModel responseModel = elasticQueryService.getDocumentById(id);
-        LOG.debug("Elasticsearch returned document with id {} ", id);
+        LOG.debug("Elasticsearch returned document with id {} on port {}", id, port);
         return ResponseEntity.ok(getV2Model(responseModel));
     }
 
@@ -97,7 +101,7 @@ public class ElasticDocumentController {
             @RequestBody @Valid ElasticQuerySeviceRequestModel requestModel) {
 
         List<ElasticQuerySeviceResponseModel> responseModels = elasticQueryService.getDocumentByText(requestModel.getText());
-        LOG.info("Elasticsearch returned {} of documents ", responseModels.size());
+        LOG.info("Elasticsearch returned {} of documents on port {}", responseModels.size(), port);
         return ResponseEntity.ok(responseModels);
     }
 

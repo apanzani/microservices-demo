@@ -1,7 +1,7 @@
 logging:
   level:
-    ROOT: DEBUG
-    com.microservices.demo: DEBUG
+    ROOT: debug
+    com.microservices.demo: debug
 
 spring:
   application:
