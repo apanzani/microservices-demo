@@ -1,6 +1,6 @@
 package com.microservices.demo.elastic.config;
 
-import com.microservices.demo.kafka.producer.config.ElasticConfigData;
+import com.microservices.demo.config.ElasticConfigData;
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;

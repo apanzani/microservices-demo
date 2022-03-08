@@ -1,10 +1,9 @@
 package com.microservices.demo.kafka.consumer.config;
 
-import com.microservices.demo.kafka.producer.config.KafkaConfigData;
-import com.microservices.demo.kafka.producer.config.KafkaConsumerConfigData;
+import com.microservices.demo.config.KafkaConfigData;
+import com.microservices.demo.config.KafkaConsumerConfigData;
 import org.apache.avro.specific.SpecificRecordBase;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;

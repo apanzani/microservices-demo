@@ -1,4 +1,4 @@
-package com.microservices.demo.elastic.query.service.config;
+package com.microservices.demo.elastic.query.web.client.config;
 
 import com.microservices.demo.config.UserConfigData;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,9 +31,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic()
                 .and()
                 .authorizeRequests()
+                .antMatchers("/").permitAll()
                 .antMatchers("/**").hasRole("USER")
-                .and()
-                .csrf().disable();
+                .anyRequest()
+                .fullyAuthenticated();
     }
 
     @Override

@@ -18,6 +18,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
+// L'annotation restController contiene già di per se ResponseBody e di conseguenza
+// converte autometicamente la response in JSON
 @RestController
 @RequestMapping(value = "/documents", produces = "application/vnd.api.v1+json")
 public class ElasticDocumentController {
