@@ -90,7 +90,8 @@ public class ElasticDocumentController {
             @ApiResponse(responseCode = "400", description = "Not found."),
             @ApiResponse(responseCode = "500", description = "Internal server error."),
     })
-    @PostMapping("/get-documet-by-text")
+    //questo uri viene configurato in config-client-elastic_query_web
+    @PostMapping("/get-document-by-text")
     public @ResponseBody
     ResponseEntity<List<ElasticQuerySeviceResponseModel>> getDocumentByText(
             @RequestBody @Valid ElasticQuerySeviceRequestModel requestModel) {

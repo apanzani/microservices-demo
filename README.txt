@@ -103,3 +103,11 @@ http://localhost:8184/elastic-query-service/api-docs.yaml
 Se richiedere username e password inserire test test1234
 
 Al link http://localhost:8184/elastic-query-service/swagger-ui/index.html#/ ho la versione dello swagger
+
+
+#### ELASTIC-QUERY-WEB-CLIENT ####
+Per testare singlarmente il modulo devo attivare il container di elasticsearch in questo modo
+docker-compose  -f common.yml -f elastic_single_node.yml up
+poi faccio partire il ConfigServer, ElasticQueryServiceApplication e alla fine ElasticQueryWebClientApplication.
+Mi porto al link localhost:8185/elastic-query-web-client/ effattuo la login con test e test1234 e dopo di che
+posso fare la mia ricerca
