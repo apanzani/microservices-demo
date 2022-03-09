@@ -14,7 +14,6 @@ import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunctions;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
-import reactor.netty.tcp.TcpClient;
 
 import java.util.concurrent.TimeUnit;
 
@@ -39,19 +38,18 @@ public class WebClientConfig {
                 .baseUrl(elasticQueryWebClientConfigData.getBaseUrl())
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, elasticQueryWebClientConfigData.getContentType())
                 .defaultHeader(HttpHeaders.ACCEPT, elasticQueryWebClientConfigData.getAcceptType())
-                .clientConnector(new ReactorClientHttpConnector(HttpClient.from(getTcpClient())))
+                .clientConnector(new ReactorClientHttpConnector(getHttpClient()))
                 .codecs(clientCodecConfigurer ->
                         clientCodecConfigurer.defaultCodecs()
                 .maxInMemorySize(elasticQueryWebClientConfigData.getMaxInMemorySize()));
     }
 
-    private TcpClient getTcpClient() {
-        return TcpClient.create()
+    private HttpClient getHttpClient() {
+        return HttpClient.create()
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, elasticQueryWebClientConfigData.getConnectTimeoutMs())
                 .doOnConnected(connection -> {
-                    connection.addHandlerLast(
-                            new ReadTimeoutHandler(elasticQueryWebClientConfigData.getReadTimeoutMs(),
-                                    TimeUnit.MILLISECONDS));
+                    connection.addHandlerLast(new ReadTimeoutHandler(elasticQueryWebClientConfigData.getReadTimeoutMs(),
+                            TimeUnit.MILLISECONDS));
                     connection.addHandlerLast(
                             new WriteTimeoutHandler(elasticQueryWebClientConfigData.getWriteTimeoutMs(),
                                     TimeUnit.MILLISECONDS));
