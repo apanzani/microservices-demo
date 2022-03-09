@@ -1,9 +1,9 @@
 package com.microservices.demo.elastic.query.web.client.service.impl;
 
 import com.microservices.demo.config.ElasticQueryWebClientConfigData;
-import com.microservices.demo.elastic.query.web.client.exception.ElasticQueryWebClientException;
-import com.microservices.demo.elastic.query.web.client.model.ElasticQueryWebClientRequestModel;
-import com.microservices.demo.elastic.query.web.client.model.ElasticQueryWebClientResponseModel;
+import com.microservices.demo.elastic.query.web.client.common.exception.ElasticQueryWebClientException;
+import com.microservices.demo.elastic.query.web.client.common.model.ElasticQueryWebClientRequestModel;
+import com.microservices.demo.elastic.query.web.client.common.model.ElasticQueryWebClientResponseModel;
 import com.microservices.demo.elastic.query.web.client.service.ElasticQueryWebClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,14 +14,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import javax.management.monitor.MonitorNotification;
-import java.lang.reflect.Type;
 import java.util.List;
+
 
 @Service
 public class TwitterElasticQueryWebClient implements ElasticQueryWebClient {
@@ -46,7 +44,7 @@ public class TwitterElasticQueryWebClient implements ElasticQueryWebClient {
                 .block();
     }
 
-    private WebClient.ResponseSpec getWebClient(ElasticQueryWebClientRequestModel requestModel){
+    private WebClient.ResponseSpec getWebClient(ElasticQueryWebClientRequestModel requestModel) {
         return webClientBuilder
                 .build()
                 .method(HttpMethod.valueOf(elasticQueryWebClientConfigData.getQueryByText().getMethod()))

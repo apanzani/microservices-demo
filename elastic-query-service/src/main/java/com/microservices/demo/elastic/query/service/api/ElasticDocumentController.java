@@ -1,8 +1,8 @@
 package com.microservices.demo.elastic.query.service.api;
 
 import com.microservices.demo.elastic.query.service.business.ElasticQueryService;
-import com.microservices.demo.elastic.query.service.model.ElasticQuerySeviceRequestModel;
-import com.microservices.demo.elastic.query.service.model.ElasticQuerySeviceResponseModel;
+import com.microservices.demo.elastic.query.service.common.model.ElasticQuerySeviceRequestModel;
+import com.microservices.demo.elastic.query.service.common.model.ElasticQuerySeviceResponseModel;
 import com.microservices.demo.elastic.query.service.model.ElasticQuerySeviceResponseModelV2;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
+
 
 // L'annotation restController contiene già di per se ResponseBody e di conseguenza
 // converte autometicamente la response in JSON
