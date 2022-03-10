@@ -49,8 +49,9 @@ public class QueryController {
         LOG.info("Querying with text {}", requestModel.getText());
         Flux<ElasticQueryWebClientResponseModel> responseModel = elasticQueryWebClient.getDataByText(requestModel);
         responseModel = responseModel.log();
-        IReactiveDataDriverContextVariable reactiveDataDriverContextVariable = new ReactiveDataDriverContextVariable(responseModel, 1);
-        model.addAttribute("elasticQueryClientResponseModels", responseModel);
+        IReactiveDataDriverContextVariable reactiveData =
+                new ReactiveDataDriverContextVariable(responseModel, 1);
+        model.addAttribute("elasticQueryClientResponseModels", reactiveData);
         model.addAttribute("searchText", requestModel.getText());
         model.addAttribute("elasticQueryClientRequestModel",
                 ElasticQueryWebClientResponseModel.builder().build());
