@@ -111,3 +111,13 @@ docker-compose  -f common.yml -f elastic_single_node.yml up
 poi faccio partire il ConfigServer, ElasticQueryServiceApplication e alla fine ElasticQueryWebClientApplication.
 Mi porto al link localhost:8185/elastic-query-web-client/ effattuo la login con test e test1234 e dopo di che
 posso fare la mia ricerca
+
+#### KEYCLOAK ####
+Dopo aver configurato keycloak utilizzare il link seguende per vedere tutte le configurazioni del realm creato
+http://localhost:9001/realms/microservices-realm/.well-known/openid-configuration
+
+Per ottenere un access token per l'utente nel microservices-realm con username app_user e password "password"
+fare la seguente chiamata curl
+
+curl -d "client_id=elastic-query-web-client" -d "client_secret=RBsJHwLX4x7f1dJ8rM2PniE53jBMM8MP" -d "username=app_user" -d "password=password" -d "grant_type=password" "http://localhost:9001/realms/microservices-realm/protocol/openid-connect/token"
+
