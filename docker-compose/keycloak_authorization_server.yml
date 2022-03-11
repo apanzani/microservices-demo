@@ -1,9 +1,4 @@
 version: '3.7'
-volumes:
-  postgres_data:
-    driver: local
-  pgadmin-data:
-    driver: local
 
 services:
   postgres:
@@ -18,6 +13,7 @@ services:
       - "5432:5432"
     networks:
       - ${GLOBAL_NETWORK:-postgres}
+
   pgadmin:
     image: dpage/pgadmin4
     volumes:
@@ -32,14 +28,13 @@ services:
       - postgres
     networks:
       - ${GLOBAL_NETWORK:-postgres}
+
   keycloak-authorization-server:
     image: quay.io/keycloak/keycloak:${KEYCLOAK_VERSION:-latest}
     hostname: keycloak-server
     entrypoint: ["/opt/keycloak/bin/kc.sh", "start-dev"]
     ports:
       - "9001:8080"
-    networks:
-      - ${GLOBAL_NETWORK:-postgres}
     environment:
       - "KEYCLOAK_ADMIN=admin"
       - "KEYCLOAK_ADMIN_PASSWORD=admin"
@@ -52,3 +47,11 @@ services:
       - "KC_DB_URL_HOST=postgres"
     depends_on:
       - postgres
+    networks:
+      - ${GLOBAL_NETWORK:-postgres}
+
+volumes:
+  postgres_data:
+    driver: local
+  pgadmin-data:
+    driver: local

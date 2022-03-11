@@ -190,7 +190,11 @@
 				<version>${spingdoc-openapi.version}</version>
 			</dependency>
 
-
+			<dependency>
+				<groupId>org.postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>${postgresql.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.twitter4j</groupId>
 				<artifactId>twitter4j-stream</artifactId>
