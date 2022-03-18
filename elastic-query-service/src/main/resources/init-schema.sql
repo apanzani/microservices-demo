@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS keycloak.users CASCADE;
+DROP TABLE IF EXISTS public.users CASCADE;
 
-CREATE TABLE keycloak.users
+CREATE TABLE public.users
 (
     id uuid NOT NULL,
     username character varying COLLATE pg_catalog."default",
@@ -11,12 +11,12 @@ CREATE TABLE keycloak.users
 
     TABLESPACE pg_default;
 
-ALTER TABLE keycloak.users
+ALTER TABLE public.users
     OWNER to keycloak;
 
-DROP TABLE IF EXISTS keycloak.documents CASCADE;
+DROP TABLE IF EXISTS public.documents CASCADE;
 
-CREATE TABLE keycloak.documents
+CREATE TABLE public.documents
 (
     id uuid NOT NULL,
     document_id character varying COLLATE pg_catalog."default" NOT NULL,
@@ -25,39 +25,39 @@ CREATE TABLE keycloak.documents
 
     TABLESPACE pg_default;
 
-ALTER TABLE keycloak.documents
+ALTER TABLE public.documents
     OWNER to keycloak;
 
-DROP TABLE IF EXISTS keycloak.user_permissions CASCADE;
+DROP TABLE IF EXISTS public.user_permissions CASCADE;
 
-CREATE TABLE keycloak.user_permissions
+CREATE TABLE public.user_permissions
 (
     user_id uuid NOT NULL,
     document_id uuid NOT NULL,
     user_permission_id uuid NOT NULL,
     permission_type character varying COLLATE pg_catalog."default",
     CONSTRAINT document_fk FOREIGN KEY (document_id)
-        REFERENCES keycloak.documents (id) MATCH SIMPLE
+        REFERENCES public.documents (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
         NOT VALID,
     CONSTRAINT user_fk FOREIGN KEY (user_id)
-        REFERENCES keycloak.users (id) MATCH SIMPLE
+        REFERENCES public.users (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE keycloak.user_permissions
+ALTER TABLE public.user_permissions
     OWNER to keycloak;
 
 CREATE INDEX "fki_USER_FK"
-    ON keycloak.user_permissions USING btree
+    ON public.user_permissions USING btree
     (user_id ASC NULLS LAST)
     TABLESPACE pg_default;
 
 CREATE INDEX fki_document_fk
-    ON keycloak.user_permissions USING btree
+    ON public.user_permissions USING btree
     (document_id ASC NULLS LAST)
     TABLESPACE pg_default;

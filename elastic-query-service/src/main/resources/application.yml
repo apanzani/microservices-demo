@@ -2,6 +2,7 @@ logging:
   level:
     ROOT: INFO
     com.microservices.demo: INFO
+    org.spring.framework.cloud.config: INFO
 
 spring:
   application:

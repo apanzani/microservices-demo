@@ -24,7 +24,8 @@ Se utilizzo WSL fare l'export delle variabili d'ambiente nel sistema WSL
 
 ### CONFIG SERVER  ###
 Se voglio vedere le configurazioni in cloud mi devo collegare all'indirizzo http://localhost:8888/config-client/{name} dove name è l'active profile settato
-nell'application.yml del mio servizio
+nell'application.yml del mio servizio. Es: localhost:8888/config-client/elastic_query
+La password di connessione al server si trova nel file application.yml e su gitHub è salvata nella sezione token con il nome di config-server authorization
 
 ### ELASTICSEARCH  ###
 Se lanciando docker-compose ottengo exited with code 78 bootstrap check failure [1] of [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
