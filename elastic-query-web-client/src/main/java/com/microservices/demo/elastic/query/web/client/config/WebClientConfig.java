@@ -5,12 +5,16 @@ import com.microservices.demo.config.UserConfigData;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepository;
+import org.springframework.security.oauth2.client.web.reactive.function.client.ServletOAuth2AuthorizedClientExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunctions;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
@@ -24,6 +28,9 @@ public class WebClientConfig {
     private final ElasticQueryWebClientConfigData.WebClient elasticQueryWebClientConfigData;
     private final UserConfigData userConfigData;
 
+    @Value("${security.default-client-registration-id}")
+    private String defaultClientRegistrazionId;
+
     public WebClientConfig(ElasticQueryWebClientConfigData elasticQueryWebClientConfigData, UserConfigData userConfigData) {
         this.elasticQueryWebClientConfigData = elasticQueryWebClientConfigData.getWebClient();
         this.userConfigData = userConfigData;
@@ -31,7 +38,16 @@ public class WebClientConfig {
 
     @LoadBalanced
     @Bean("webClientBuilder")
-    WebClient.Builder webClientBuilder() {
+    WebClient.Builder webClientBuilder(
+            ClientRegistrationRepository clientRegistrationRepository,
+            OAuth2AuthorizedClientRepository oAuth2AuthorizedClientRepository
+    ) {
+
+        ServletOAuth2AuthorizedClientExchangeFilterFunction oAuth2 = new ServletOAuth2AuthorizedClientExchangeFilterFunction(clientRegistrationRepository,
+                oAuth2AuthorizedClientRepository);
+        oAuth2.setDefaultOAuth2AuthorizedClient(true);
+        oAuth2.setDefaultClientRegistrationId(defaultClientRegistrazionId);
+
         return WebClient.builder()
                 .filter(ExchangeFilterFunctions
                         .basicAuthentication(userConfigData.getUsername(), userConfigData.getPassword()))
@@ -39,6 +55,7 @@ public class WebClientConfig {
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, elasticQueryWebClientConfigData.getContentType())
                 .defaultHeader(HttpHeaders.ACCEPT, elasticQueryWebClientConfigData.getAcceptType())
                 .clientConnector(new ReactorClientHttpConnector(getHttpClient()))
+                .apply(oAuth2.oauth2Configuration())
                 .codecs(clientCodecConfigurer ->
                         clientCodecConfigurer.defaultCodecs()
                 .maxInMemorySize(elasticQueryWebClientConfigData.getMaxInMemorySize()));
