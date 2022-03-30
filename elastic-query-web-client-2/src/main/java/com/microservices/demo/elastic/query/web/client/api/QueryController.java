@@ -1,6 +1,6 @@
-package client.api;
+package com.microservices.demo.elastic.query.web.client.api;
 
-import client.service.ElasticQueryWebClient;
+import com.microservices.demo.elastic.query.web.client.service.ElasticQueryWebClient;
 import com.microservices.demo.elastic.query.web.client.common.model.ElasticQueryWebClientRequestModel;
 import com.microservices.demo.elastic.query.web.client.common.model.ElasticQueryWebClientResponseModel;
 import org.slf4j.Logger;

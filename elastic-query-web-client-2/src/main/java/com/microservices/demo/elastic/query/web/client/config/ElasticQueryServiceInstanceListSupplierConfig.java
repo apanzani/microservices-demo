@@ -1,4 +1,4 @@
-package client.config;
+package com.microservices.demo.elastic.query.web.client.config;
 
 import com.microservices.demo.config.ElasticQueryWebClientConfigData;
 import org.springframework.cloud.client.DefaultServiceInstance;

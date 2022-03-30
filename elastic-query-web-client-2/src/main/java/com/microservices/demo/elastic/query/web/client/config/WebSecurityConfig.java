@@ -1,4 +1,4 @@
-package client.config;
+package com.microservices.demo.elastic.query.web.client.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

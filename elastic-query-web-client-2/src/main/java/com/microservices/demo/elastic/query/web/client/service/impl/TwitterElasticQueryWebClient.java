@@ -1,6 +1,6 @@
-package client.service.impl;
+package com.microservices.demo.elastic.query.web.client.service.impl;
 
-import client.service.ElasticQueryWebClient;
+import com.microservices.demo.elastic.query.web.client.service.ElasticQueryWebClient;
 import com.microservices.demo.config.ElasticQueryWebClientConfigData;
 import com.microservices.demo.elastic.query.web.client.common.exception.ElasticQueryWebClientException;
 import com.microservices.demo.elastic.query.web.client.common.model.ElasticQueryWebClientRequestModel;
