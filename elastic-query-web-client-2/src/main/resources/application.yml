@@ -6,17 +6,17 @@ logging:
 
 spring:
   application:
-    name: elastic-query-web-client
+    name: elastic-query-web-client-2
   profiles:
-    active: elastic_query_web
+    active: elastic_query_web_2
   config:
     import: 'configserver:'
   cloud:
     config:
       # all'interno del config-server-repository abbiamo il file config-client-elastic_query_web
-      name: elastic-query-web-client,config-client
+      name: elastic-query-web-client-2,config-client
       username: spring_cloud_user
       password: ${SPRING_SECURITY_USER_PASSWORD}
 
 log:
-  app-name: elastic-query-web-client
+  app-name: elastic-query-web-client-2

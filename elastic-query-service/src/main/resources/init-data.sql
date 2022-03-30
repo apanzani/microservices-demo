@@ -1,13 +1,13 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 
-INSERT INTO public.users(
+INSERT INTO users(
 	id, username, firstname, lastname)
 	VALUES ('4191acfa-298a-4bbd-ac0d-55e6fa5b4ab9', 'app_user', 'Standard', 'User');
-INSERT INTO public.users(
+INSERT INTO users(
 	id, username, firstname, lastname)
 	VALUES ('74c6a7fb-2c02-47ae-8fa7-98889473403a', 'app_admin', 'Admin', 'User');
-INSERT INTO public.users(
+INSERT INTO users(
 	id, username, firstname, lastname)
 	VALUES ('55a05e8b-4404-4df0-89bd-00a69ad5423e', 'app_super_user', 'Super', 'User');
 
