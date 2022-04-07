@@ -1,5 +1,6 @@
 #!/bin/bash
 # check-keycloak-server-started.sh
+apt-get update -y
 
 curlResult=$(curl -s -o /dev/null -I -w "%{http_code}" http://keycloak-authorization-server:9091/realms/microservices-realm)
 
