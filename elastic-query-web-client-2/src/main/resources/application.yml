@@ -1,8 +1,8 @@
 logging:
   level:
-    ROOT: DEBUG
-    com.microservices.demo: DEBUG
-    org.springframework.web.client.RestTemplate: DEBUG
+    ROOT: INFO
+    com.microservices.demo: INFO
+    org.springframework.web.client.RestTemplate: INFO
 
 spring:
   application:
